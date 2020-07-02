@@ -10,22 +10,22 @@ exporter.years_of_history = 10
 exporter.split_records = false
 exporter.split_records.duplicate_data = false
 exporter.ccda.export = false
-exporter.fhir.export = false
+exporter.fhir.export = true
 exporter.fhir_stu3.export = false
 exporter.fhir_dstu2.export = false
 exporter.fhir.use_shr_extensions = false
 exporter.fhir.use_us_core_ig = false
-exporter.fhir.transaction_bundle = false
+exporter.fhir.transaction_bundle = true
 exporter.fhir.bulk_data = false
 exporter.groups.fhir.export = false
-exporter.hospital.fhir.export = false
+exporter.hospital.fhir.export = true
 exporter.hospital.fhir_stu3.export = false
 exporter.hospital.fhir_dstu2.export = false
-exporter.practitioner.fhir.export = false
+exporter.practitioner.fhir.export = true
 exporter.practitioner.fhir_stu3.export = false
 exporter.practitioner.fhir_dstu2.export = false
 exporter.encoding = UTF-8
-exporter.csv.export = true
+exporter.csv.export = false
 # if exporter.csv.append_mode = true, then each run will add new data to any existing CSVs. if false, each run will clear out the files and start fresh 
 exporter.csv.append_mode = false
 # if exporter.csv.folder_per_run = true, then each run will have CSVs placed into a unique subfolder. if false, each run will only use the top-level csv folder
@@ -38,7 +38,7 @@ exporter.cdw.export = false
 exporter.text.export = false
 exporter.text.per_encounter_export = false
 exporter.clinical_note.export = false
-exporter.cost_access_outcomes_report = true
+exporter.cost_access_outcomes_report = false
 exporter.prevalence_report = false
 exporter.custom_report = false
 # note: prevalence and custom reports require a database (set below)
@@ -191,6 +191,9 @@ generate.payers.selection_behavior = random
 # It might assume things occurred that haven't actually happened it. Use with care.
 generate.payers.loss_of_care = false
 
+# Add a FHIR terminology service URL to enable the use of ValueSet URIs within code definitions.
+# generate.terminology_service_url = https://r4.ontoserver.csiro.au/fhir
+
 # Quit Smoking
 lifecycle.quit_smoking.baseline = 0.01
 lifecycle.quit_smoking.timestep_delta = -0.01
@@ -216,7 +219,11 @@ lifecycle.death_by_loss_of_care = false
 # Use physiology simulations to generate some VitalSigns
 physiology.generators.enabled = false
 
+# Allow physiology module states to be executed
+# If false, all Physiology state objects will immediately redirect to the state defined in
+# the alt_direct_transition field
+physiology.state.enabled = false
+
 # set to true to introduce errors in height, weight and BMI observations for people
 # under 20 years old
 growtherrors = false
-
